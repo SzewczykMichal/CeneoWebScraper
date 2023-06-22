@@ -1,0 +1,18 @@
+{% extends "base.html.jinja" %}
+{% block title %}
+Pobieranie opinii o produkcie
+{% endblock title %}
+{% block content %}
+ <div class="container mt-3">
+      <div class="container mt-5" class="form-inline">
+        <form>
+            <div class="form-group">
+                <label for="id_produkt" class="h6">Podaj ID produktu: </label>
+                <input type="text" class="form-control" aria-label="large" aria-describedby="inputGroup-sizing-sm" id="id_produkt" aria-describedby="emailHelp" required placeholder="Podaj ID" pattern="[\d]{9}">
+            </div>
+            <button type="submit" class="btn btn-primary" formaction="strona_produktu.html">Wyślij</button>
+        </form>
+    </div>
+{% endblock content %}
+            
+        

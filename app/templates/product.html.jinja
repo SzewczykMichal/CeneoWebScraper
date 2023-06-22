@@ -1,0 +1,91 @@
+{% extends "base.html.jinja" %}
+{% block title %}
+Nazwa produktu
+{% endblock title %}
+{% block content %}
+<div class="d-flex">
+        <div class="row">
+            <div class="col">
+                <table id="opinions">
+                    <thead>
+                        <tr>
+                            <th>Id opinii</th>
+                            <th>Autor</th>
+                            <th>Rekomendacja</th>
+                            <th>Liczba gwiazdek</th>
+                            <th>Tresc</th>
+                            <th>Lista zalet</th>
+                            <th>Lista wad</th>
+                            <th>Potwierdzono zakupem</th>
+                            <th>Data wystawienia</th>
+                            <th>Data zakupu</th>
+                            <th>Przydatna</th>
+                            <th>Nieprzydatna</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <script>
+                            $(document).ready(function() {
+                                var table = $('#opinions').DataTable({
+                                    ajax: {
+                                        url: "39562616.json",
+                                        dataSrc: ""
+                                    },
+                                    columns: [{
+                                        data: 'opinion_id',
+                                        title: 'ID opinii'
+                                    }, {
+                                        data: 'author',
+                                        title: 'Autor'
+                                    }, {
+                                        data: 'content',
+                                        title: 'Treść'
+                                    }, {
+                                        data: 'stars',
+                                        title: 'Gwiazdki'
+                                    }, {
+                                        data: 'recommendation',
+                                        title: 'Rekomendacja'
+                                    }, {
+                                        data: 'pros',
+                                        title: 'Lista zalet'
+                                    }, {
+                                        data: 'cons',
+                                        title: 'Lista wad'
+                                    }, {
+                                        data: 'useful_count',
+                                        title: 'Przydatna'
+                                    }, {
+                                        data: 'unuseful_count',
+                                        title: 'Nieprzydatna'
+                                    }, {
+                                        data: 'purchased',
+                                        title: 'Potwierdzona zakupem'
+                                    }, {
+                                        data: 'opinion_date',
+                                        title: 'Data wystawienia'
+                                    }, {
+                                        data: 'purchase_date',
+                                        title: 'Data zakupu'
+                                    }, ],
+                                    columnDefs: [{
+                                        targets: -1,
+                                        data: null,
+                                        defaultContent: '<button>Rozwiń!</button>'
+                                    }, ],
+                                });
+                            });
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+{% block scripts %}
+<script>
+$(document).ready(function () {
+        $('#opinions').DataTable();
+    });
+</script>
+{% endblock scripts %}
