@@ -5,12 +5,12 @@ Pobieranie opinii o produkcie
 {% block content %}
  <div class="container mt-3">
       <div class="container mt-5" class="form-inline">
-        <form>
+        <form method="POST" action="{{url_for('extract')}}">
             <div class="form-group">
-                <label for="id_produkt" class="h6">Podaj ID produktu: </label>
-                <input type="text" class="form-control" aria-label="large" aria-describedby="inputGroup-sizing-sm" id="id_produkt" aria-describedby="emailHelp" required placeholder="Podaj ID" pattern="[\d]{9}">
+                <label for="product_code" class="h6" name="product_code">Podaj ID produktu: </label>
+                <input name="product_code" required id="product_code" type="text" class="form-control" aria-label="large" aria-describedby="inputGroup-sizing-sm" aria-describedby="emailHelp" required placeholder="Podaj ID" pattern="[\d]{8}">
             </div>
-            <button type="submit" class="btn btn-primary" formaction="strona_produktu.html">Wyślij</button>
+            <button type="submit" class="btn btn-primary">Wyślij</button>
         </form>
     </div>
 {% endblock content %}
