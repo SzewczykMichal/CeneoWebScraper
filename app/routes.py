@@ -10,7 +10,7 @@ from bs4 import BeautifulSoup
 
 @app.route('/')
 def index():
-    return render_template('index.html.jinja')
+    return render_template('index.html.jinja', active='index')
 
 @app.route('/extract', methods=['POST', 'GET'])
 def extract():
@@ -52,7 +52,7 @@ def extract():
         with open(f"app/data/stats/{product_code}.json", "w", encoding="UTF-8") as jf:
             json.dump(stats, jf, indent=4, ensure_ascii=False)
         return redirect(url_for('product', code=product_code))
-    return render_template('extract.html.jinja')
+    return render_template('extract.html.jinja', active='extract')
 
 @app.route('/products')
 def products():
@@ -63,12 +63,12 @@ def products():
             product = json.load(jf)
         product["product_code"] = file.removesuffix(".json")
         products.append(product)
-    return render_template('products.html.jinja', products=products)
+    return render_template('products.html.jinja', products=products,active='products')
 
 @app.route('/product/<code>')
 def product(code):
     opinions = pd.read_json(f"./app/data/opinions/{code}.json")
-    return render_template('product.html.jinja', 
+    return render_template('product.html.jinja', active='product',
                            product_code=code, 
                            opinions=opinions.to_html(header=True,
                                                      table_id="opinions",
@@ -80,4 +80,4 @@ def charts():
 
 @app.route('/author')
 def author():
-    return render_template('author.html.jinja')
+    return render_template('author.html.jinja', active='author')
